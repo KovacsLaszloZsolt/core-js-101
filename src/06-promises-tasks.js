@@ -104,18 +104,6 @@ function getFastestPromise(array) {
  *
  */
 function chainPromises(/* array, action */) {
-  // console.log(array, action);
-
-  // const solvePromis = async (promise) => {
-  //   const solved = await promise;
-  //   return solved;
-  // };
-
-  // const promises = array.map((promis) => solvePromis(promis));
-
-  // promises.reduce((a,b) => pr)
-  // // console.log(promises);
-  // return action(Promise.allSettled(array));
   throw new Error('Not implemented');
 }
 
