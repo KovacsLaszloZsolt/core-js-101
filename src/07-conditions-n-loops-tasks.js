@@ -182,8 +182,12 @@ function doRectanglesOverlap(rect1, rect2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const c = Math.sqrt((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2);
+  if (c < circle.radius) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -294,8 +298,28 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const ccnArr = ccn.toString().split('').map((char) => parseInt(char, 10));
+  const lastNum = ccnArr[ccnArr.length - 1];
+
+  ccnArr.pop();
+
+  const makeOneDigit = (num) => {
+    const newNum = Math.floor(num / 10) + (num % 10);
+    return newNum;
+  };
+
+  const sum = ccnArr.reverse()
+    .map((num, index) => num * (index % 2 ? 1 : 2))
+    .map((num) => (num < 10 ? num : makeOneDigit(num)))
+    .reduce((a, b) => a + b);
+
+  const mod = (sum % 10);
+  if (lastNum === (10 - mod === 10 ? 0 : 10 - mod)) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
