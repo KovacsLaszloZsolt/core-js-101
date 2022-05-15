@@ -550,7 +550,8 @@ function distinct(arr) {
  *   }
  */
 function group(/* array, keySelector, valueSelector */) {
-  // const map = new Map(array.map())
+  // let result = inventory.groupBy( ({ type }) => type );
+  // console.log(array.groupBy(({ country }) => country));
   throw new Error('Not implemented');
 }
 
