@@ -23,8 +23,9 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(/* f, g */) {
-  throw new Error('Not implemented');
+function getComposition(f, g) {
+  return (x) => f(g(x));
+  // throw new Error('Not implemented');
 }
 
 
@@ -81,8 +82,12 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const num = func();
+
+  return () => num;
+
+  // throw new Error('Not implemented');
 }
 
 
@@ -102,9 +107,23 @@ function memoize(/* func */) {
  * retryer() => 2
  */
 function retry(/* func, attempts */) {
+  // const val = () => {
+  //   let tries = attempts;
+
+  //   while (tries >= 0) {
+  //     console.log(tries);
+  //     try {
+  //       func();
+  //     } catch (err) {
+  //       tries = -1;
+  //     }
+  //     tries -= 1;
+  //   }
+  // };
+
+  // return val;
   throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the logging wrapper for the specified method,
