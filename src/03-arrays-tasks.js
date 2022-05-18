@@ -549,10 +549,17 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  // let result = inventory.groupBy( ({ type }) => type );
-  // console.log(array.groupBy(({ country }) => country));
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  const result = array.reduce((prev, curr) => {
+    const newPrev = { ...prev };
+    if (newPrev[keySelector(curr)]) {
+      prev[keySelector(curr)].push(valueSelector(curr));
+    } else {
+      newPrev[keySelector(curr)] = [valueSelector(curr)];
+    }
+    return newPrev;
+  }, Object.create(null));
+  return new Map(Object.entries(result));
 }
 
 
